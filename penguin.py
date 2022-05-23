@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-#import plotly.express as px
+import plotly.express as px
 
 
 url = "https://raw.githubusercontent.com/dediegod/streamlit-example/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv"
