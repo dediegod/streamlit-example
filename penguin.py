@@ -78,27 +78,41 @@ else:
 Sex = df['Sex'].isin(selected_Sex)
 df = df[Sex]
 
+mostrar_tabla_sin = st.checkbox('Mostrar tabla de datos sin filtrar')
+mostrar_tabla = st.checkbox('Mostrar tabla de datos filtrada  (primero seleccione todos los filtros en la parte izquierda)')
+mostrar_graficos = st.checkbox('Mostrar gráficas  (primero seleccione todos los filtros en la parte izquierda)')
 
-   
-mostrar_tabla = st.checkbox('Mostrar tabla de datos')
+
+if mostrar_tabla_sin:
+        st.header("Tabla dataset sin filtrar")
+        df_sin
+
 if mostrar_tabla:
-        st.header("Tabla dataset")
+        st.header("Tabla dataset filtrada")
         st.dataframe (df)
         
-        
-mostrar_graficos = st.checkbox('Mostrar gráficas')
 
 if mostrar_graficos:
+    
+   
     fig_col1, fig_col2 = st.columns(2)
     with fig_col1:
         st.markdown("### Body Mass (g)")
-        fig = px.histogram(df, x='Island', y='Flipper Length (mm)', hover_data=['Culmen Length (mm)', 'Culmen Depth (mm)'], color='Sex', barmode='group', height=450)
-        st.plotly_chart(fig) 
-
+        fig = px.histogram(df, x='Body Mass (g)',  color='Sex', barmode='group', height=450)
+        st.write(fig)
+           
     with fig_col2:
         st.markdown("### Flipper Length (mm)")
         fig2 = px.histogram(df, x="Flipper Length (mm)", color='Sex', barmode='group', height=450)
-        st.plotly_chart(fig2)
-
-
-
+        st.write(fig2)
+        
+    fig_col3, fig_col4 = st.columns(2)
+    with fig_col3:
+        st.markdown("### Culmen Length (mm)")
+        fig3 = px.histogram(df, x='Culmen Length (mm)',  color='Sex', barmode='group', height=450)
+        st.write(fig3)
+           
+    with fig_col4:
+        st.markdown("### Culmen Depth (mm)")
+        fig4 = px.histogram(df, x="Culmen Depth (mm)", color='Sex', barmode='group', height=450)
+        st.write(fig4)
