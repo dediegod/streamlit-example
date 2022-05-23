@@ -2,9 +2,9 @@ import pandas as pd
 import streamlit as st
 #import plotly.express as px  # interactive charts
 
-df = pd.read_csv(https://github.com/dediegod/streamlit-example/blob/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv)
-df = pd.read_csv(url, index_col=0)
-print(df.head(5))
+#df = pd.read_csv(https://github.com/dediegod/streamlit-example/blob/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv)
+#df = pd.read_csv(url, index_col=0)
+#print(df.head(5))
 
 
 primaryColor="#6eb1ff"
