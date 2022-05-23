@@ -2,8 +2,6 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px  # interactive charts
 
-https://github.com/dediegod/streamlit-example/blob/master/penguins%20lter.csv
-"""
 url = 'https://github.com/dediegod/streamlit-example/blob/master/penguins%20lter.csv'
 df = pd.read_csv(url)
 #print(df.head(5))
