@@ -2,8 +2,6 @@ import pandas as pd
 import streamlit as st
 #import plotly.express as px  # interactive charts
 
-#df = pd.read_csv(https://github.com/dediegod/streamlit-example/blob/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv)
-
 
 url = "https://raw.githubusercontent.com/dediegod/streamlit-example/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv"
 df = pd.read_csv(url, index_col=0)
@@ -27,3 +25,65 @@ df["Sex"] = df["Sex"].replace(to_replace = ["FEMALE"], value ="Female")
 df["Sex"] = df["Sex"].dropna()
 df = df.dropna()
 df = df.drop(['Sample Number', 'Region'], axis=1)
+
+st.set_page_config(
+    page_title="Pingüinos Archipiélago Palmer",
+    page_icon="🐧",
+    layout="wide",
+)
+st.title('Datos de pingüinos del Archipiélago Palmer (Antártida)')
+st.subheader("Autor: Diego de Diego González")
+st.header("Introducción")
+st.markdown('Los datos fueron recopilados y puestos a disposición por la Dra. Kristen Gorman y la Estación Palmer, Antártida LTER , miembro de la Red de Investigación Ecológica a Largo Plazo.')
+#st.markdown("> ")
+st.subheader('Primero seleccione qué campos quiere filtrar en la columna de la izquierda, después seleccione qué desea mostrar:')
+
+
+
+st.sidebar.title('Filtros')
+st.sidebar.write('Puede elegir una o multiples opciones por cada desplegable')
+
+
+container = st.sidebar.container()
+
+all_specie = container.checkbox("Seleccionar todas las especies")
+
+if all_specie:
+    selected_Species = container.multiselect("Selecciona una o más especies de pingüino",
+         pd.unique(df["Species"]), pd.unique(df["Species"]))
+else:
+    selected_Species =  container.multiselect("Selecciona una o más especies de pingüino:",
+        options=(pd.unique(df["Species"])))
+Species = df['Species'].isin(selected_Species)
+df = df[Species]
+
+
+all_Island = container.checkbox("Seleccionar todas las islas")
+if all_Island:
+    selected_Island = container.multiselect("Selecciona una o más islas del pingüino:",
+         pd.unique(df["Island"]), pd.unique(df["Island"]))
+else:
+    selected_Island =  container.multiselect("Selecciona una o más islas del pingüino:",
+        options=(pd.unique(df["Island"])))
+Island = df['Island'].isin(selected_Island)
+df = df[Island]
+
+
+all_Sex = container.checkbox("Seleccionar ambos sexos")
+if all_Sex:
+    selected_Sex = container.multiselect("Seleccionel sexo del pingüino:",
+         pd.unique(df["Sex"]), pd.unique(df["Sex"]))
+else:
+    selected_Sex =  container.multiselect("Seleccionel sexo del pingüino:",
+        options=(pd.unique(df["Sex"])))
+Sex = df['Sex'].isin(selected_Sex)
+df = df[Sex]
+
+
+   
+mostrar_tabla = st.checkbox('Mostrar tabla de datos')
+if mostrar_tabla:
+        st.header("Tabla dataset")
+        st.dataframe (df)
+        
+mostrar_graficos = st.checkbox('Mostrar gráficas')
