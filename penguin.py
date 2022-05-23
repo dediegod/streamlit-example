@@ -24,6 +24,7 @@ df["Sex"] = df["Sex"].replace(to_replace = ["FEMALE"], value ="Female")
 df["Sex"] = df["Sex"].dropna()
 df = df.dropna()
 df = df.drop(['Sample Number', 'Region'], axis=1)
+df_sin = df
 
 st.set_page_config(
     page_title="Pingüinos Archipiélago Palmer",
