@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
-import altair as alt
-#import plotly.express as px  # interactive charts
+#import plotly.express as px
 
 
 url = "https://raw.githubusercontent.com/dediegod/streamlit-example/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv"
@@ -87,8 +86,19 @@ if mostrar_tabla:
         st.header("Tabla dataset")
         st.dataframe (df)
         
+        
 mostrar_graficos = st.checkbox('Mostrar gráficas')
+
 if mostrar_graficos:
-    c = alt.Chart(df).mark_circle().encode(
-        x='Island', y='Flipper Length (mm)', size='Culmen Depth (mm)', color='Sex', tooltip=['a', 'b', 'c'])
-st.altair_chart(c, use_container_width=True)
+    fig_col1, fig_col2 = st.columns(2)
+    with fig_col1:
+        st.markdown("### Body Mass (g)")
+        st.write.px.histogram(df, x='Island', y='Flipper Length (mm)', hover_data=['Culmen Length (mm)', 'Culmen Depth (mm)'], color='Sex', barmode='group', height=450)
+           
+    with fig_col2:
+        st.markdown("### Flipper Length (mm)")
+        fig2 = px.histogram(df, x="Flipper Length (mm)", color='Sex', barmode='group', height=450)
+        st.write(fig2)
+
+
+
