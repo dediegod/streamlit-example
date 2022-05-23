@@ -2,8 +2,7 @@ import pandas as pd
 import streamlit as st
 #import plotly.express as px  # interactive charts
 
-url = 'https://github.com/dediegod/streamlit-example/blob/master/penguins%20lter.csv'
-df = pd.read_csv(url)
+df = pd.read_csv(https://github.com/dediegod/streamlit-example/blob/master/penguins%20lter.csv)
 #print(df.head(5))
 
 primaryColor="#6eb1ff"
