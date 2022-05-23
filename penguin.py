@@ -5,17 +5,16 @@ import plotly.express as px
 
 url = "https://raw.githubusercontent.com/dediegod/streamlit-example/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv"
 df = pd.read_csv(url, index_col=0)
-print(df.head(5))
-
+#print(df.head(5))
 
 primaryColor="#6eb1ff"
 backgroundColor="#f1eded"
 secondaryBackgroundColor="#e4e4e4"
 textColor="#000b4c"
 
-#print('Cantidad de Filas y columnas:',df.shape)
-#print('Nombre columnas:',df.columns)
-#df.info()
+print('Cantidad de Filas y columnas:',df.shape)
+print('Nombre columnas:',df.columns)
+df.info()
 
 df["Sex"] = df["Sex"].fillna("Sexo sin identificar")
 df["Comments"] = df["Comments"].fillna("")
