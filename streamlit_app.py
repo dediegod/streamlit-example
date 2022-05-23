@@ -87,3 +87,14 @@ if mostrar_tabla:
         st.dataframe (df)
         
 mostrar_graficos = st.checkbox('Mostrar gráficas')
+if mostrar_graficos:
+    fig_col1, fig_col2 = st.columns(2)
+    with fig_col1:
+        st.markdown("### Body Mass (g)")
+        fig = px.histogram(df, x='Island', y='Flipper Length (mm)', hover_data=['Culmen Length (mm)', 'Culmen Depth (mm)'], color='Sex', barmode='group', height=450)
+        st.write(fig)
+           
+    with fig_col2:
+        st.markdown("### Flipper Length (mm)")
+        fig2 = px.histogram(df, x="Flipper Length (mm)", color='Sex', barmode='group', height=450)
+        st.write(fig2)
