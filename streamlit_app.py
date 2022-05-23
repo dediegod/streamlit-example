@@ -6,6 +6,13 @@ import streamlit as st
 #df = pd.read_csv(url, index_col=0)
 #print(df.head(5))
 
+url = "https://raw.githubusercontent.com/dediegod/streamlit-example/431b7fd882c39f0adf220651110ec58c910c3bf3/penguins%20lter.csv"
+download = requests.get(url).content
+
+# Reading the downloaded content and turning it into a pandas dataframe
+
+df = pd.read_csv(io.StringIO(download.decode('utf-8')))
+
 
 primaryColor="#6eb1ff"
 backgroundColor="#f1eded"
