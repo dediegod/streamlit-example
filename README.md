@@ -1,6 +1,8 @@
-# Welcome to Streamlit!
+# ACTIVIDAD 2 - DIEGO DE DIEGO GONZALEZ
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+Diseño y programación de herramientas analíticas
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+Datos de pingüinos del Archipiélago Palmer (Antártida)
+
+Dasboard disponible en Streamlit:
+https://share.streamlit.io/dediegod/streamlit-example/penguin.py
